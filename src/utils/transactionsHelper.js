@@ -14,6 +14,12 @@ export async function getTransactionsData(walletAddress) {
   return calculateAverageCostBasis(data);
 }
 
+export async function getEnsData(walletAddress) {
+  const response = await fetch(`https://ensdata.net/${walletAddress}`);
+  const data = await response.json();
+  return data;
+}
+
 export async function getCurrentPrice() {
   const options = {
     method: "GET",

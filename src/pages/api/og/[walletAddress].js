@@ -1,8 +1,9 @@
 // pages/api/og/[walletAddress].js
-import { createCanvas, registerFont } from "canvas";
+import { createCanvas, registerFont, loadImage } from "canvas";
 import {
   getTransactionsData,
   getCurrentPrice,
+  getEnsData,
 } from "../../../utils/transactionsHelper";
 
 export default async function handler(req, res) {
@@ -33,13 +34,30 @@ export default async function handler(req, res) {
     // Text: Wallet Address
     context.font = "bold 20pt Arial";
     context.fillStyle = "#000";
-    context.fillText(
-      `Wallet: ${walletAddress.substring(0, 6)}...${walletAddress.substring(
-        walletAddress.length - 4
-      )}`,
-      50,
-      100
-    );
+
+    let name = `walletAddress.substring(0, 6)}...${walletAddress.substring(
+      walletAddress.length - 4
+    )}`;
+
+    try {
+      const { ens, avatar_url } = await getEnsData(walletAddress);
+      console.log(avatar_url);
+      if (ens) {
+        name = ens;
+      }
+      if (avatar_url) {
+        //TODO: Not Working
+        const response = await fetch(avatar_url);
+        const buffer = await response.buffer();
+        const img = await loadImage(buffer);
+        context.drawImage(img, 50, 150, 100, 100); // Draw the image on the canvas
+      }
+    } catch (error) {
+      console.error(error);
+      //res.status(500).json({ error: "Internal Server Error" });
+    }
+
+    context.fillText(name, 50, 100);
 
     // Text: Gain/Loss USD
     context.font = "bold 30pt Arial";
