@@ -1,4 +1,4 @@
-// pages/api/og/[walletAddress].js
+// pages/api/og/index.js
 import satori from "satori";
 import fs from "fs";
 import path from "path";
@@ -15,9 +15,17 @@ export default async function handler(req, res) {
     // Handle POST request
     const { untrustedData } = req.body;
     console.log(untrustedData);
+    console.log(req.body);
+    // Add logic to handle untrustedData as needed
+    res.status(200).json({ message: "POST request processed" });
   } else if (req.method === "GET") {
     console.log("api/og GET");
     const { walletAddress } = req.query;
+
+    // Proceed only if walletAddress is provided
+    if (!walletAddress) {
+      return res.status(400).json({ error: "Wallet address is required" });
+    }
 
     // Load the Inter font file
     const interFontBuffer = fs.readFileSync(
