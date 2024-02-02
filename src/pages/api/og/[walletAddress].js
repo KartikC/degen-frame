@@ -2,10 +2,10 @@
 import { generateImage } from "./index";
 
 export default async function handler(req, res) {
-  const { address } = req.query;
+  const { walletAddress } = req.query;
 
   try {
-    const svg = await generateImage(address);
+    const svg = await generateImage(walletAddress);
     res.setHeader("Content-Type", "image/svg+xml");
     res.send(svg);
   } catch (error) {
