@@ -72,16 +72,16 @@ export async function generateImage(walletAddress) {
         <p
           style={{
             marginBottom: "20px",
-            fontSize: "48px",
+            fontSize: "84px",
             color: "#CBD5E1",
           }}
         >
           {name}
         </p>
-        <p style={{ fontSize: "96px", color: "#38BDF8" }}>
+        <p style={{ fontSize: "128px", color: "#38BDF8" }}>
           ${formattedGainLossUsd}
         </p>
-        <p style={{ fontSize: "72px", color: "#CBD5E1" }}>
+        <p style={{ fontSize: "84px", color: "#CBD5E1" }}>
           {Math.round(gainLossPercentage)}%
         </p>
       </div>
