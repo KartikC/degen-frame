@@ -19,6 +19,10 @@ export default function Home() {
         />
         <meta property="og:image" content="/default.png" />
         <meta property="fc:frame:button:1" content="Reveal my degeneracy 🎩" />
+        <meta
+          property="fc:frame:post_url"
+          content="https://degen-frame.vercel.app/og"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
