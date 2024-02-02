@@ -16,7 +16,10 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="fc:frame" content="vNext" />
-        <meta property="fc:frame:image" content="/default.png" />
+        <meta
+          property="fc:frame:image"
+          content="https://degen-frame.vercel.app/default.png"
+        />
         <meta property="og:image" content="/default.png" />
         <meta property="fc:frame:button:1" content="How Degenerate am I?" />
         <link rel="icon" href="/favicon.ico" />
