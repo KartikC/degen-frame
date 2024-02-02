@@ -9,11 +9,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>How Degenerate am I?</title>
-        <meta
-          name="description"
-          content="Check your profit or loss on $degen"
-        />
+        <title>How degenerate are you?</title>
+        <meta name="description" content="Reveal your degeneracy 🎩" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="fc:frame" content="vNext" />
         <meta
@@ -21,7 +18,7 @@ export default function Home() {
           content="https://degen-frame.vercel.app/default.png"
         />
         <meta property="og:image" content="/default.png" />
-        <meta property="fc:frame:button:1" content="How Degenerate am I?" />
+        <meta property="fc:frame:button:1" content="Reveal my degeneracy 🎩" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
