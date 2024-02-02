@@ -17,9 +17,15 @@ export default async function handler(req, res) {
     console.log(untrustedData);
     console.log(req.body);
     // Add logic to handle untrustedData as needed
+
+    if (untrustedData && untrustedData.fid) {
+      const fid = jsonObject.untrustedData.fid;
+      console.log(fid);
+    } else {
+      console.log("no untrusted data");
+    }
     res.status(200).json({ message: "POST request processed" });
   } else if (req.method === "GET") {
-    console.log("api/og GET");
     const { walletAddress } = req.query;
 
     // Proceed only if walletAddress is provided
