@@ -139,7 +139,6 @@ export default async function handler(req, res) {
       console.log("no untrusted data");
       return res.status(400).json({ error: "No data received" });
     }
-    res.status(200).json({ message: "POST request processed" });
   } else if (req.method === "GET") {
     const { walletAddress } = req.query;
 
