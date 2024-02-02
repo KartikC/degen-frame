@@ -8,7 +8,7 @@ import {
   getEnsData,
 } from "../../../utils/transactionsHelper";
 
-async function generateImage(walletAddress) {
+export async function generateImage(walletAddress) {
   // Load the Inter font file
   const interFontBuffer = fs.readFileSync(
     path.resolve(process.cwd(), "src/fonts", "Inter.ttf")

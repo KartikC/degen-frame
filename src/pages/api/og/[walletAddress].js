@@ -1,5 +1,5 @@
 // pages/api/og/[walletAddress].js
-import { generateImage } from "../og/index";
+import { generateImage } from "./index";
 
 export default async function handler(req, res) {
   const { address } = req.query;
