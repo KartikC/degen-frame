@@ -47,6 +47,11 @@ export default async function handler(req, res) {
         ? "https://degen-frame.vercel.app/happy.png"
         : "https://degen-frame.vercel.app/sad.png";
 
+    const formattedGainLossUsd = parseFloat(gainLossUsd).toLocaleString(
+      "en-US",
+      { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+    );
+
     const svg = await satori(
       <svg width="1910" height="1000" xmlns="http://www.w3.org/2000/svg">
         <img
@@ -76,9 +81,11 @@ export default async function handler(req, res) {
           >
             {name}
           </p>
-          <p style={{ fontSize: "96px", color: "#38BDF8" }}>${gainLossUsd}</p>
+          <p style={{ fontSize: "96px", color: "#38BDF8" }}>
+            ${formattedGainLossUsd}
+          </p>
           <p style={{ fontSize: "72px", color: "#CBD5E1" }}>
-            {gainLossPercentage}%
+            {Math.round(gainLossPercentage)}%
           </p>
         </div>
       </svg>,
