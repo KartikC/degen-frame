@@ -18,9 +18,20 @@ export default async function handler(req, res) {
     console.log(req.body);
     // Add logic to handle untrustedData as needed
 
+    // Inside your POST request handler
     if (untrustedData && untrustedData.fid) {
-      const fid = jsonObject.untrustedData.fid;
+      const fid = untrustedData.fid;
       console.log(fid);
+
+      // Make a request to the API
+      const response = await fetch(
+        `https://searchcaster.xyz/api/profiles?fid=${fid}`
+      );
+      const data = await response.json();
+
+      // Store the connectedAddress
+      const connectedAddress = data[0].connectedAddress;
+      console.log(connectedAddress);
     } else {
       console.log("no untrusted data");
     }
