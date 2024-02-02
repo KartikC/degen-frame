@@ -42,11 +42,16 @@ export default async function handler(req, res) {
     }
 
     // Generate SVG with Satori
+    const imageUrl =
+      gainLossUsd >= 0
+        ? "https://degen-frame.vercel.app/happy.png"
+        : "https://degen-frame.vercel.app/sad.png";
+
     const svg = await satori(
       <svg width="1910" height="1000" xmlns="http://www.w3.org/2000/svg">
         <img
-          src="https://degen-frame.vercel.app/happy.png"
-          alt=""
+          src={imageUrl}
+          alt="happy or sad bg-image"
           style={{ position: "absolute", top: 0, left: 0 }}
         />
         <div
