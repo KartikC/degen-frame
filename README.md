@@ -1,6 +1,6 @@
 Degen Frame is a Farcaster Frame that shows the user the gain or loss on their $DEGEN position.
 
-## Try it youself
+## Try it yourself!
 
 - It's live [here](https://warpcast.com/sathaxe/0x5f6cdaed)
 
