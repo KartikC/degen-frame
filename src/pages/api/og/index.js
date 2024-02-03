@@ -104,9 +104,7 @@ export async function generateImage(walletAddress) {
 }
 
 export default async function handler(req, res) {
-  console.log(`Request method: ${req.method}`);
   if (req.method === "POST") {
-    console.log("api/og POST");
     // Handle POST request
     const { untrustedData } = req.body;
     if (untrustedData && untrustedData.fid) {
@@ -119,7 +117,7 @@ export default async function handler(req, res) {
 
       // Store the connectedAddress
       const connectedAddress = data[0].connectedAddress;
-      console.log(connectedAddress);
+      // console.log(connectedAddress);
 
       try {
         res.status(200).send(`
@@ -132,11 +130,9 @@ export default async function handler(req, res) {
         </html>
       `);
       } catch (error) {
-        console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
       }
     } else {
-      console.log("no untrusted data");
       return res.status(400).json({ error: "No data received" });
     }
   } else if (req.method === "GET") {
