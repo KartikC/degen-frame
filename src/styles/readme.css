@@ -1,0 +1,37 @@
+/* readme.css */
+
+.markdown {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .markdown h1, .markdown h2 {
+    color: #0070f3;
+    margin: 24px 0 16px 0;
+  }
+  
+  .markdown a {
+    color: #0070f3;
+    text-decoration: none;
+  }
+  
+  .markdown a:hover {
+    text-decoration: underline;
+  }
+  
+  .markdown p {
+    margin: 10px 0;
+  }
+  
+  .markdown code {
+    background-color: #f7f7f7;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  
+  .markdown img {
+    max-width: 100%;
+    height: auto;
+  }
+  
