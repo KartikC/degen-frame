@@ -1,5 +1,13 @@
 Degen Frame is a Farcaster Frame that shows the user the gain or loss on their $DEGEN position.
 
+## Try it youself
+
+- It's live [here](https://warpcast.com/sathaxe/0x5f6cdaed)
+
+
+[<img width="617" alt="image" src="https://github.com/KartikC/degen-frame/assets/1454812/6bc34ca8-6c95-4f14-987a-156f24f2838d">
+](https://warpcast.com/sathaxe/0x5f6cdaed)
+
 ## How it works
 
 - Gets the users connected address using the [Searchcaster API](https://searchcaster.xyz/docs)
