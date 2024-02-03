@@ -14,6 +14,7 @@ Degen Frame is a Farcaster Frame that shows the user the gain or loss on their $
 
 ## Todo
 
+- A frame for users who don't have any $DEGEN instead of returning an error
 - Consider all transactions, not just the last 100 $DEGEN transactions
 - Support multiple connected addresses
 - Support delegate.xyz addresses from your main connected address
