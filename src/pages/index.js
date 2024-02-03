@@ -1,11 +1,27 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import "@primer/css/markdown/index.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [readmeContent, setReadmeContent] = useState("");
+
+  // Fetch README content from GitHub
+  useEffect(() => {
+    fetch(
+      "https://raw.githubusercontent.com/KartikC/degen-frame/main/README.md"
+    )
+      .then((response) => response.text())
+      .then((text) => {
+        setReadmeContent(text);
+      })
+      .catch((error) => console.error("Error fetching README:", error));
+  }, []);
+
   return (
     <>
       <Head>
@@ -26,28 +42,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{" "}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
+        {/* Render GitHub README here */}
+        <div className="markdown-body">
+          <ReactMarkdown>{readmeContent}</ReactMarkdown>
         </div>
       </main>
     </>
