@@ -47,13 +47,15 @@ export function calculateAverageCostBasis(apiResponse) {
       transaction.attributes.operation_type === "receive"
     ) {
       transaction.attributes.transfers.forEach((transfer) => {
-        if (
-          transfer.direction === "in" &&
-          transfer.fungible_info.symbol === "DEGEN"
-        ) {
+        if (transfer.fungible_info.symbol === "DEGEN") {
           const quantity = parseFloat(transfer.quantity.numeric);
-          totalQuantity += quantity;
-          totalUsdValue += transfer.value;
+          if (transfer.direction === "in") {
+            totalQuantity += quantity;
+            totalUsdValue += transfer.value;
+          } else if (transfer.direction === "out") {
+            totalQuantity -= quantity;
+            totalUsdValue -= transfer.value;
+          }
         }
       });
     }
