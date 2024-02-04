@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   try {
     const svg = await generateImage(walletAddress);
-    res.setHeader("Content-Type", "image/svg+xml");
+    res.setHeader("Content-Type", "image/png");
     res.send(svg);
   } catch (error) {
     console.error(error);

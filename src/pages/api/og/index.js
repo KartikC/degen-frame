@@ -1,6 +1,7 @@
 // pages/api/og/index.js
 import satori from "satori";
 import fs from "fs";
+import sharp from "sharp";
 import path from "path";
 import {
   getTransactionsData,
@@ -100,7 +101,10 @@ export async function generateImage(walletAddress) {
     }
   );
 
-  return svg;
+  // Convert SVG to PNG using sharp
+  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+
+  return png;
 }
 
 export default async function handler(req, res) {
@@ -145,7 +149,7 @@ export default async function handler(req, res) {
 
     try {
       const svg = await generateImage(walletAddress);
-      res.setHeader("Content-Type", "image/svg+xml");
+      res.setHeader("Content-Type", "image/png");
       res.send(svg);
     } catch (error) {
       console.error(error);
