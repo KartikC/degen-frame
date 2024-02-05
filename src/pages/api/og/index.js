@@ -39,18 +39,28 @@ export async function generateImage(walletAddress) {
     console.error(error);
   }
 
-  // Generate SVG with Satori
-  const imageUrl =
-    gainLossUsd > 0
-      ? "https://degen-frame.vercel.app/happy.png"
-      : gainLossUsd < 0
-      ? "https://degen-frame.vercel.app/sad.png"
-      : "https://degen-frame.vercel.app/cry.png";
-
   const formattedGainLossUsd = parseFloat(gainLossUsd).toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+
+  let imageUrl;
+  let message;
+  let subMessage;
+
+  if (gainLossUsd > 0) {
+    imageUrl = "https://degen-frame.vercel.app/happy.png";
+    message = `${formattedGainLossUsd}`;
+    subMessage = `${Math.round(gainLossPercentage)}%`;
+  } else if (gainLossUsd < 0) {
+    imageUrl = "https://degen-frame.vercel.app/sad.png";
+    message = `${formattedGainLossUsd}`;
+    subMessage = `${Math.round(gainLossPercentage)}%`;
+  } else {
+    imageUrl = "https://degen-frame.vercel.app/cry.png";
+    message = "NO DEGEN?!";
+    subMessage = "";
+  }
 
   const svg = await satori(
     <svg width="1910" height="1000" xmlns="http://www.w3.org/2000/svg">
@@ -81,12 +91,8 @@ export async function generateImage(walletAddress) {
         >
           {name}
         </p>
-        <p style={{ fontSize: "128px", color: "#38BDF8" }}>
-          ${formattedGainLossUsd}
-        </p>
-        <p style={{ fontSize: "84px", color: "#CBD5E1" }}>
-          {Math.round(gainLossPercentage)}%
-        </p>
+        <p style={{ fontSize: "128px", color: "#38BDF8" }}>{message}</p>
+        <p style={{ fontSize: "84px", color: "#CBD5E1" }}>{subMessage}</p>
       </div>
     </svg>,
     {
