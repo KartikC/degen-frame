@@ -59,7 +59,7 @@ export async function generateImage(walletAddress) {
   } else {
     imageUrl = "https://degen-frame.vercel.app/cry.png";
     message = "NO DEGEN?!";
-    subMessage = "";
+    subMessage = "click below to buy some";
   }
 
   const svg = await satori(
@@ -138,6 +138,12 @@ export default async function handler(req, res) {
           <head>
             <meta property="fc:frame" content="vNext" />
             <meta property="fc:frame:image" content="https://degen-frame.vercel.app/api/og/${connectedAddress}" />
+            <meta property="fc:frame:button:1" content="buy MOAR $degen 🎩" />
+            <meta propert="fc:frame:button:1:action" content="post_redirect" />
+            <meta
+              property="fc:frame:post_url"
+              content="https://app.uniswap.org/tokens/base/0x4ed4e862860bed51a9570b96d89af5e1b0efefed"
+            />
           </head>
         </html>
       `);
