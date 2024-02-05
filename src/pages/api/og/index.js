@@ -41,9 +41,11 @@ export async function generateImage(walletAddress) {
 
   // Generate SVG with Satori
   const imageUrl =
-    gainLossUsd >= 0
+    gainLossUsd > 0
       ? "https://degen-frame.vercel.app/happy.png"
-      : "https://degen-frame.vercel.app/sad.png";
+      : gainLossUsd < 0
+      ? "https://degen-frame.vercel.app/sad.png"
+      : "https://degen-frame.vercel.app/cry.png";
 
   const formattedGainLossUsd = parseFloat(gainLossUsd).toLocaleString("en-US", {
     minimumFractionDigits: 2,
