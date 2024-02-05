@@ -143,7 +143,7 @@ export default async function handler(req, res) {
             <meta name="fc:frame:button:1:action" content="post_redirect" />
             <meta
               property="fc:frame:post_url"
-              content="https://app.uniswap.org/tokens/base/0x4ed4e862860bed51a9570b96d89af5e1b0efefed"
+              content="https://degen-frame.vercel.app/api/og"
             />
           </head>
         </html>
