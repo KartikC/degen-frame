@@ -119,6 +119,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     // Handle POST request
     const { untrustedData } = req.body;
+    console.log(untrustedData);
     if (untrustedData && untrustedData.fid) {
       const fid = untrustedData.fid;
       // Make a request to the API
