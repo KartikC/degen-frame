@@ -9,6 +9,50 @@ import {
   getEnsData,
 } from "../../../utils/transactionsHelper";
 
+export async function generateErrorImage(heading, subheading) {
+  const imageUrl = "https://degen-frame.vercel.app/confused.png";
+
+  const svg = await satori(
+    `<svg width="1910" height="1000" xmlns="http://www.w3.org/2000/svg">
+      <img
+        src="${imageUrl}"
+        alt="error bg-image"
+        style="position: absolute; top: 0; left: 0"
+      />
+      <div
+        xmlns="http://www.w3.org/1999/xhtml"
+        style="display: flex; flexDirection: column; justifyContent: center; alignItems: center; color: white; fontFamily: Inter; width: 1910px; height: 1000px;"
+      >
+        <p style="fontSize: 128px; color: #38BDF8;">
+          ${heading}
+        </p>
+        <p style="fontSize: 84px; color: #CBD5E1;">
+          ${subheading}
+        </p>
+      </div>
+    </svg>`,
+    {
+      width: 1910,
+      height: 1000,
+      fonts: [
+        {
+          name: "Inter",
+          data: fs.readFileSync(
+            path.resolve(process.cwd(), "src/fonts", "Inter.ttf")
+          ),
+          weight: 400,
+          style: "normal",
+        },
+      ],
+    }
+  );
+
+  // Convert SVG to PNG using sharp
+  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+
+  return png;
+}
+
 export async function generateImage(walletAddress) {
   // Load the Inter font file
   const interFontBuffer = fs.readFileSync(
@@ -122,6 +166,7 @@ export default async function handler(req, res) {
     console.log(req.body);
     if (untrustedData && untrustedData.fid) {
       const fid = untrustedData.fid;
+      console.log(fid);
       // Make a request to the API
       const response = await fetch(
         `https://searchcaster.xyz/api/profiles?fid=${fid}`
@@ -129,7 +174,13 @@ export default async function handler(req, res) {
       const data = await response.json();
 
       // Store the connectedAddress
-      const connectedAddress = data[0].connectedAddress;
+      let connectedAddress = null;
+
+      try {
+        connectedAddress = data[0].connectedAddress;
+      } catch (error) {
+        console.error(error);
+      }
 
       //static degen addr
       const tokenAddress = "0x4ed4e862860bed51a9570b96d89af5e1b0efefed";
