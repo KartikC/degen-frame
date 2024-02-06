@@ -130,20 +130,22 @@ export default async function handler(req, res) {
 
       // Store the connectedAddress
       const connectedAddress = data[0].connectedAddress;
-      // console.log(connectedAddress);
+
+      //static degen addr
+      const tokenAddress = "0x4ed4e862860bed51a9570b96d89af5e1b0efefed";
 
       try {
         res.status(200).send(`
         <!DOCTYPE html>
         <html>
           <head>
-            <meta property="fc:frame" content="vNext" />
-            <meta property="fc:frame:image" content="https://degen-frame.vercel.app/api/og/${connectedAddress}" />
-            <meta property="fc:frame:button:1" content="buy MOAR $degen 🎩" />
+            <meta name="fc:frame" content="vNext" />
+            <meta name="fc:frame:image" content="https://degen-frame.vercel.app/api/og/${connectedAddress}" />
+            <meta name="fc:frame:button:1" content="buy MOAR $degen 🎩" />
             <meta name="fc:frame:button:1:action" content="post_redirect" />
             <meta
-              property="fc:frame:post_url"
-              content="https://degen-frame.vercel.app/api/og"
+            name="fc:frame:post_url"
+              content="https://degen-frame.vercel.app/api/uniswap/${tokenAddress}"
             />
           </head>
         </html>

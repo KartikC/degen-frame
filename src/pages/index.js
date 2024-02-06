@@ -92,15 +92,15 @@ export default function Home() {
         <title>How degenerate are you?</title>
         <meta name="description" content="Reveal your degeneracy 🎩" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="fc:frame" content="vNext" />
+        <meta name="fc:frame" content="vNext" />
         <meta
-          property="fc:frame:image"
+          name="fc:frame:image"
           content="https://degen-frame.vercel.app/default.png"
         />
         <meta property="og:image" content="/default.png" />
-        <meta property="fc:frame:button:1" content="Reveal my degeneracy 🎩" />
+        <meta name="fc:frame:button:1" content="Reveal my degeneracy 🎩" />
         <meta
-          property="fc:frame:post_url"
+          name="fc:frame:post_url"
           content="https://degen-frame.vercel.app/api/og"
         />
         <link rel="icon" href="/favicon.ico" />
