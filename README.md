@@ -4,7 +4,6 @@ Degen Frame is a Farcaster Frame that shows the user the gain or loss on their $
 
 - It's live [here](https://warpcast.com/sathaxe/0x5f6cdaed)
 
-
 [<img width="617" alt="image" src="https://github.com/KartikC/degen-frame/assets/1454812/6bc34ca8-6c95-4f14-987a-156f24f2838d">
 ](https://warpcast.com/sathaxe/0x5f6cdaed)
 
@@ -15,6 +14,11 @@ Degen Frame is a Farcaster Frame that shows the user the gain or loss on their $
 - Gets your name from ENS using the [ensdata API](https://ensdata.net)
 - Calculates your profit/loss in USD and % terms and displays them!
 
+## Recent Updates
+
+- Links you out to buy more $DEGEN after checking
+- New emotion for when you have no $DEGEN, begs you to buy some!
+
 ## Limitations
 
 - Only considers the farcast user's first connected address
@@ -22,7 +26,6 @@ Degen Frame is a Farcaster Frame that shows the user the gain or loss on their $
 
 ## Todo
 
-- A frame for users who don't have any $DEGEN instead of returning an error
 - Consider all transactions, not just the last 100 $DEGEN transactions
 - Support multiple connected addresses
 - Support delegate.xyz addresses from your main connected address
